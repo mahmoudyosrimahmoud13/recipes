@@ -2,13 +2,24 @@ import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:recipes/screens/Tabs.dart';
+import 'package:recipes/screens/categories_screen.dart';
 
-final theme = ThemeData(
+final kTheme = ThemeData().copyWith(
+  colorScheme: ColorScheme.fromSeed(
+    brightness: Brightness.light,
+    seedColor: HexColor('#00DFA2'),
+  ),
   useMaterial3: true,
+  textTheme: GoogleFonts.exo2TextTheme(),
+);
+
+final kThemeDark = ThemeData.dark().copyWith(
   colorScheme: ColorScheme.fromSeed(
     brightness: Brightness.dark,
-    seedColor: HexColor('#C1F2B0'),
+    seedColor: HexColor('#FF0060'),
   ),
+  useMaterial3: true,
   textTheme: GoogleFonts.exo2TextTheme(),
 );
 
@@ -22,8 +33,9 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: theme,
-      home: null,
+      theme: kTheme,
+      darkTheme: kThemeDark,
+      home: const TabsScreen(),
     );
   }
 }
