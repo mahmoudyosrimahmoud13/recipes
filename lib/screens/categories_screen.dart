@@ -44,25 +44,6 @@ class CategoriesScreen extends StatelessWidget {
                 _selectCategory(context, cat);
               },
             ),
-          Center(
-            child: Text(
-              'For my beloved Rana ❤️❤️❤️',
-              style: Theme.of(context)
-                  .textTheme
-                  .titleMedium!
-                  .copyWith(color: Theme.of(context).colorScheme.onBackground),
-              textAlign: TextAlign.center,
-            ),
-          ),
-          Center(
-              child: Text(
-            '❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️',
-            style: Theme.of(context)
-                .textTheme
-                .titleMedium!
-                .copyWith(color: Theme.of(context).colorScheme.onBackground),
-            textAlign: TextAlign.center,
-          )),
         ]);
   }
 }
