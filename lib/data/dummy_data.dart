@@ -146,7 +146,6 @@ const dummyMeals = [
       'Quickly fry the buns for c. 1 minute on each side',
       'Bruch buns with ketchup',
       'Serve burger with tomato, cucumber and onion',
-      '\nعارف انك بتحبيه انا بعرف اعمله وهبقى اعملك بحبك ❤️❤️❤️❤️'
     ],
     isGlutenFree: false,
     isVegan: false,

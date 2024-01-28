@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:recipes/screens/Tabs.dart';
-import 'package:recipes/screens/categories_screen.dart';
 
 final kTheme = ThemeData().copyWith(
   colorScheme: ColorScheme.fromSeed(

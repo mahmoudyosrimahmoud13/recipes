@@ -1,19 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:recipes/data/dummy_data.dart';
+import 'package:recipes/models/meals.dart';
 import 'package:recipes/screens/meals_screen.dart';
 import 'package:recipes/widgets/category_grid_item.dart';
 import '../models/category.dart';
 
 class CategoriesScreen extends StatelessWidget {
-  const CategoriesScreen({super.key});
+  const CategoriesScreen(
+      {super.key,
+      required this.onToggleFavorite,
+      required this.availableMeals});
+
+  final void Function(Meal meal) onToggleFavorite;
+  final List<Meal> availableMeals;
 
   void _selectCategory(BuildContext context, Category category) {
-    final filteredMeals = dummyMeals
+    final filteredMeals = availableMeals
         .where((meal) => meal.categories.contains(category.id))
         .toList();
     Navigator.of(context).push(MaterialPageRoute(
-        builder: (ctx) =>
-            MealsScreen(title: category.title, meals: filteredMeals)));
+        builder: (ctx) => MealsScreen(
+              title: category.title,
+              meals: filteredMeals,
+              onToggleFavorite: onToggleFavorite,
+            )));
   }
 
   @override
@@ -45,15 +55,14 @@ class CategoriesScreen extends StatelessWidget {
             ),
           ),
           Center(
-            child: Text(
-              '❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️',
-              style: Theme.of(context)
-                  .textTheme
-                  .titleMedium!
-                  .copyWith(color: Theme.of(context).colorScheme.onBackground),
-              textAlign: TextAlign.center,
-            ),
-          )
+              child: Text(
+            '❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️',
+            style: Theme.of(context)
+                .textTheme
+                .titleMedium!
+                .copyWith(color: Theme.of(context).colorScheme.onBackground),
+            textAlign: TextAlign.center,
+          )),
         ]);
   }
 }
