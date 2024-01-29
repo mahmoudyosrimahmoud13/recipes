@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-enum Filter { glutenFree, lactoseFree, vegan, vegeterian }
+import 'package:recipes/providers/filters-provider.dart';
 
-class FiltersScreen extends StatefulWidget {
-  const FiltersScreen({super.key, required this.currentFilters});
-  final Map<Filter, bool> currentFilters;
+class FiltersScreen extends ConsumerStatefulWidget {
+  const FiltersScreen({
+    super.key,
+  });
 
   @override
-  State<FiltersScreen> createState() => _FiltersScreenState();
+  ConsumerState<FiltersScreen> createState() => _FiltersScreenState();
 }
 
-class _FiltersScreenState extends State<FiltersScreen> {
+class _FiltersScreenState extends ConsumerState<FiltersScreen> {
   var _glutenFreeFilterSet = false;
   var _lactoseFreeFilterSet = false;
   var _veganFilterSet = false;
@@ -18,10 +20,11 @@ class _FiltersScreenState extends State<FiltersScreen> {
 
   @override
   void initState() {
-    _glutenFreeFilterSet = widget.currentFilters[Filter.glutenFree]!;
-    _lactoseFreeFilterSet = widget.currentFilters[Filter.lactoseFree]!;
-    _veganFilterSet = widget.currentFilters[Filter.vegan]!;
-    _vegetarianFilterSet = widget.currentFilters[Filter.vegeterian]!;
+    var activeFilter = ref.watch(filterProvider);
+    _glutenFreeFilterSet = activeFilter[Filter.glutenFree]!;
+    _lactoseFreeFilterSet = activeFilter[Filter.lactoseFree]!;
+    _veganFilterSet = activeFilter[Filter.vegan]!;
+    _vegetarianFilterSet = activeFilter[Filter.vegeterian]!;
     super.initState();
   }
 
